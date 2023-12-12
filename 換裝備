@@ -1,0 +1,33 @@
+items = int(input())
+my_dict = {}
+
+for i in range(items):
+    bobOrigin = input()
+    bob = bobOrigin.split()
+    if len(bob) <= 2:
+        my_dict[bob[0]] = int(bob[1])
+    else:
+        my_dict[bob[0]] = bob[1::]
+
+ans_list = []
+nums = int(input())
+
+for i in range(nums):
+    test = input().split()
+    total = 0
+    
+    for item in test:
+        
+        if item in my_dict:
+            if isinstance(my_dict[item], list):
+                for j in range(len(my_dict[item])):
+                    if my_dict[item][j] in my_dict:
+                        total += int(my_dict[my_dict[item][j]])
+                    else:
+                        total += int(my_dict[item][j])
+                ans_list.append(total)
+            else:
+                ans_list.append(my_dict[item])
+    
+for ans in ans_list:
+    print(ans)
